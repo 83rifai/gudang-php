@@ -14,7 +14,7 @@
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Kode Barang: </label>
-                  <input class="form-control" type="text" name="kode_barang" placeholder="Kode Barang" value="<?php echo $result['Kode_Barang']; ?>">
+                  <input class="form-control" type="text" readonly="true" name="kode_barang" placeholder="Kode Barang" value="<?php echo $result['Kode_Barang']; ?>">
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-12">
@@ -25,15 +25,15 @@
               </div><!-- col-4 -->
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Jenis Barang: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="jenis_barang" placeholder="Jenis Barang">
+                  <label class="form-control-label">Jenis Barang: </label>
+                  <input class="form-control" type="text" name="jenis_barang" placeholder="Jenis Barang" value="<?php echo $result['Jenis_Barang']; ?>">
                 </div>
               </div><!-- col-4 -->
 
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Satuan Barang: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="satuan_barang" placeholder="Satuan Barang">
+                  <label class="form-control-label">Satuan Barang:</label>
+                  <input class="form-control" type="text" name="satuan" placeholder="Satuan Barang" value="<?php echo $result['Satuan']; ?>">
                 </div>
               </div><!-- col-4 -->
             </div><!-- row -->
@@ -52,8 +52,10 @@
   
   $(document).ready(function(){
     $('#button-save').click(function(){
-      $.post('system/function.php?f=tambah_barang',function(response){
-        console.log(response)
+      $.post('system/function.php?f=edit_barang',$('#form-input').serialize(),function(response){
+        if(response === 'true'){
+           $('#main-content').load('contents/barang.php');
+        }
         return false;
       })
     })

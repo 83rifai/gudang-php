@@ -13,27 +13,27 @@
             <div class="row mg-b-25">
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Kode Barang: </label>
-                  <input class="form-control" type="text" name="kode_barang" placeholder="Kode Barang" value="<?php echo $result['Kode_Barang']; ?>">
+                  <label class="form-control-label">Kode Supplier: </label>
+                  <input class="form-control" type="text" name="Kode_Supplier" placeholder="Kode Supplier" >
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Nama Barang: </label>
-                  <input class="form-control" type="text" name="nama_barang" placeholder="Nama Barang" value="<?php echo $result['Nama_Barang']; ?>" >
+                  <label class="form-control-label">Nama Supplier: </label>
+                  <input class="form-control" type="text" name="Nama_Supplier" placeholder="Nama Supplier" >
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Jenis Barang: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="jenis_barang" placeholder="Jenis Barang">
+                  <label class="form-control-label">Alamat: <!-- <span class="tx-danger">*</span> --></label>
+                  <input class="form-control" type="text" name="Alamat" placeholder="Alamat">
                 </div>
               </div><!-- col-4 -->
 
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Satuan Barang: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="satuan_barang" placeholder="Satuan Barang">
+                  <label class="form-control-label">Contact Person: </label>
+                  <input class="form-control" type="text" name="Contact_Person" placeholder="Contact Person">
                 </div>
               </div><!-- col-4 -->
             </div><!-- row -->

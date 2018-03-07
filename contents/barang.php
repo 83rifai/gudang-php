@@ -33,7 +33,7 @@
                       <td><?php echo $result['Satuan'];?></td>
                       <td align="center">
                         <a href="javascript:void(0)" data-link="barang-edit" data-id="<?php echo $result['Kode_Barang'];?>" title="Edit" class="btn btn-primary btn-sm edit-link"><i class="fa fa-pencil"></i></a>
-                        <a href="javascript:void(0)" title="Delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                        <a href="javascript:void(0)" title="Delete" data-link="barang-delete" data-id="<?php echo $result['Kode_Barang'];?>" class="btn btn-danger btn-sm delete-link"><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>
                     <?php
@@ -59,10 +59,22 @@
       $('.edit-link').click(function(){
         var content = this.dataset.link;
         var Id = this.dataset.id;
-        console.log(this)
         $('#main-content').load('contents/' + content + '.php?i=' + Id);
         $('#page-title').text(content);
       }); // end
+
+      $('.delete-link').click(function(){
+        var content = this.dataset.link;
+        var Id = this.dataset.id;
+        $.post('system/function.php?f=delete_barang',{kode_barang:Id}, function(response){
+          console.log(response);
+          if(response === 'true'){
+             $('#main-content').load('contents/barang.php');
+          }
+        })
+       
+      }); // end
+
     })
 
       $(function(){
