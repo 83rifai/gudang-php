@@ -1,8 +1,30 @@
 <?php
-
+session_start();
 include "../connection.php";
+error_reporting(0);
 
 echo $_GET['f']($conn);
+
+
+function base_url(){
+  return sprintf(
+    "%s://%s%s",
+    isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+    $_SERVER['SERVER_NAME'],
+    $_SERVER['REQUEST_URI']
+  );
+}
+
+function auth($db){
+	$query = $db->query("SELECT * FROM 	USER where User_Name = 'tuti' AND User_Password = 'tuti' ");
+
+	if($query == 1){
+		$_SESSION['CVPENUHBERKAH'] = $query->fetch_assoc();
+		return 'true';
+	}else{
+		return 'false';
+	}	
+}
 
 function tambah_barang($db){
 	
@@ -74,7 +96,7 @@ function tambah_supplier($db){
 
 function delete_supplier($db){
 	
-	$query = $db->query("DELETE FROM supplier WHERE Kode_Supplier = '".$_POST['i']."' ");
+	$query = $db->query("DELETE FROM supplier WHERE Kode_Supplier = '".$_POST['kode_supplier']."' ");
 	
 	if($query == 1){
 		return "true";

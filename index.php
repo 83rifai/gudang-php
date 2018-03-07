@@ -1,7 +1,20 @@
-<!DOCTYPE html>
-<?
+
+
+<?php 
+
+
+session_start();
+
+if(!isset($_SESSION['CVPENUHBERKAH'])){
+  header('Location:login.php');
+}else{
+    $auth = $_SESSION['CVPENUHBERKAH'];
+}
+
+
 include('connection.php');
 ?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -32,7 +45,7 @@ include('connection.php');
     <meta name="author" content="ThemePixels">
 
 
-    <title>Katniss Responsive Bootstrap 4 Admin Template</title>
+    <title>CV PENUH BERKAH</title>
 
     <!-- vendor css -->
     <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -131,7 +144,7 @@ include('connection.php');
         <div class="dropdown dropdown-profile">
           <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
             <img src="img/img3.jpg" class="wd-32 rounded-circle" alt="">
-            <span class="logged-name"><span class="hidden-xs-down">Jane Doe</span> <i class="fa fa-angle-down mg-l-3"></i></span>
+            <span class="logged-name"><span class="hidden-xs-down"><?php echo strtoupper($auth['User_Name']); ?></span> <i class="fa fa-angle-down mg-l-3"></i></span>
           </a>
           <div class="dropdown-menu wd-200">
             <ul class="list-unstyled user-profile-nav">
@@ -168,7 +181,7 @@ include('connection.php');
         </div><!-- alert -->
 
         <div id="main-content"></div>
-
+        
       </div>
       
     
