@@ -1,0 +1,72 @@
+.thblue{
+	background-color: #007bff;
+	color: #fff;
+	border:1px solid black;
+}
+
+.center{
+	text-align: center;
+	font-color: black;
+}
+
+.border-radius{
+	background-color:rgba(0,0,0,.05);
+	border: 1px #e1e1e1 solid;
+	border-radius: 3px;
+	padding: 5px;
+}
+
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
+
+.container {<!-- w  w w . ja  v a  2 s. c  o m-->
+  margin-top: 10px;
+}
+
+.hero-unit {
+  padding: 50px 50px 50px 50px;
+}
+
+.form-horizontal .control-label {
+  width: 61px;
+}
+
+.form-horizontal .controls {
+  margin-left: 80px;
+}
+/* Landscape phone to portrait tablet */
+@media ( max-width : 767px) {
+}
+/* Landscape phones and down */
+@media ( max-width : 480px) {
+  .hero-unit {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .form-horizontal .controls {
+    margin-left: 0;
+  }
+}
+
+.bunder{
+	margin-right:auto;margin-left:auto;
+	border: solid #f1f1f1 1px;
+	border-radius: 100px;
+	height:150px;
+	width:150px;
+}
+
+.test{
+	margin-right:auto;margin-left:auto;
+}
+
+
+
+.login-container{width:30%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto; border:1px #f1f111 solid;}
+@media (min-width:576px){.login-container{max-width:540px}}
+@media (min-width:768px){.login-container{max-width:720px}}
+@media (min-width:992px){.login-container{max-width:960px}}
+@media (min-width:1200px){.login-container{max-width:1140px}}
+.login-container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
