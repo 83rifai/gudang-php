@@ -17,6 +17,20 @@
         </li><!-- nav-item -->
 
         <li class="nav-item">
+          <a href="javascript:void(0)" class="nav-link menu-link" data-link="supplier" >
+            <i class="fa fa-truck"></i>&nbsp;
+            <span>Supplier</span>
+          </a>
+        </li><!-- nav-item -->
+
+        <li class="nav-item">
+          <a href="javascript:void(0)" class="nav-link menu-link" data-link="customer" >
+            <i class="fa fa-users"></i>&nbsp;
+            <span>Customer</span>
+          </a>
+        </li><!-- nav-item -->
+
+        <li class="nav-item">
           <a href="javascript:void(0)" class="nav-link menu-link" data-link="pembelian" >
             <i class="icon ion-ios-briefcase-outline"></i>&nbsp;
             <span>Pembelian</span>
@@ -34,13 +48,6 @@
           <a href="javascript:void(0)" class="nav-link menu-link" data-link="produksi" >
             <i class="icon ion-ios-briefcase-outline"></i>&nbsp;
             <span>Produksi</span>
-          </a>
-        </li><!-- nav-item -->
-
-        <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link menu-link" data-link="supplier" >
-            <i class="icon ion-ios-briefcase-outline"></i>&nbsp;
-            <span>Supplier</span>
           </a>
         </li><!-- nav-item -->
 
