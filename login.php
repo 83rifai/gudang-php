@@ -1,16 +1,9 @@
 <?php
-function base_url(){
-  return sprintf(
-    "%s://%s%s",
-    isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-    $_SERVER['SERVER_NAME'],
-    $_SERVER['REQUEST_URI']
-  );
-}
+session_start();
 
-  if(!isset($_SESSION['CVPENUHBERKAH'])){
-    header('Location:index.php');
-  }
+if(isset($_SESSION['CVPENUHBERKAH'])){
+  header('Location:index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +36,7 @@ function base_url(){
     <meta name="author" content="ThemePixels">
 
 
-    <title>Katniss Responsive Bootstrap 4 Admin Template</title>
+    <title>LOGIN - CV. PENUH BERKAH</title>
 
     <!-- vendor css -->
     <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -55,7 +48,7 @@ function base_url(){
   </head>
 
   <body>
-<form method="post" id="form-login">
+<form method="post" id="form-login" action="javascript:void(0)">
     <div class="signpanel-wrapper">
       <div class="signbox">
         <div class="signbox-header">
@@ -91,9 +84,11 @@ function base_url(){
   $(document).ready(function(){
     $('#btn-login').click(function(){
       $.post('system/function.php?f=auth',$('#form-login').serialize(), function(response){
-        if(response == 'true'){
-          window.location = '<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];?>';
+        console.log(JSON.stringify(response));
+        if(response == true){
+          window.location = 'index.php';
         }
+        return false;
       });
      
     });

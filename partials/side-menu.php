@@ -32,50 +32,38 @@
 
         <li class="nav-item">
           <a href="javascript:void(0)" class="nav-link menu-link" data-link="pembelian" >
-            <i class="icon ion-ios-briefcase-outline"></i>&nbsp;
+            <i class="fa fa-shopping-cart"></i>&nbsp;
             <span>Pembelian</span>
           </a>
         </li><!-- nav-item -->
 
         <li class="nav-item">
           <a href="javascript:void(0)" class="nav-link menu-link" data-link="jual" >
-            <i class="icon ion-ios-briefcase-outline"></i>&nbsp;
+            <i class="fa fa-shopping-bag"></i>&nbsp;
             <span>Jual</span>
           </a>
         </li><!-- nav-item -->
 
         <li class="nav-item">
           <a href="javascript:void(0)" class="nav-link menu-link" data-link="produksi" >
-            <i class="icon ion-ios-briefcase-outline"></i>&nbsp;
+            <i class="fa fa-steam"></i>&nbsp;
             <span>Produksi</span>
           </a>
         </li><!-- nav-item -->
 
         <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link menu-link" data-link="barang" >
-            <i class="icon ion-ios-briefcase-outline"></i>&nbsp;
+          <a href="javascript:void(0)" class="nav-link menu-link" data-link="stock-opname" >
+            <i class="fa fa-list-ol"></i>&nbsp;
             <span>Stok Opname</span>
           </a>
         </li><!-- nav-item -->
 
         <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link menu-link" data-link="barang" >
-            <i class="icon ion-ios-briefcase-outline"></i>&nbsp;
+          <a href="javascript:void(0)" class="nav-link menu-link" data-link="stock" >
+            <i class="fa fa-th-list"></i>&nbsp;
             <span>Stok</span>
           </a>
         </li><!-- nav-item -->
-       
-        <li class="nav-item">
-          <a href="" class="nav-link with-sub">
-            <i class="icon ion-ios-list-outline"></i>&nbsp;
-            <span>Tables</span>
-          </a>
-          <ul class="nav-sub">
-            <li class="nav-item"><a href="table-basic.html" class="nav-link">Basic Table</a></li>
-            <li class="nav-item"><a href="table-datatable.html" class="nav-link">Data Table</a></li>
-          </ul>
-        </li><!-- nav-item -->
-
 
       </ul>
     </div><!-- kt-sideleft -->

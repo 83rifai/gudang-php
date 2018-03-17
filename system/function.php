@@ -5,6 +5,11 @@ error_reporting(0);
 
 echo $_GET['f']($conn);
 
+function format_date($date){
+	$date = new DateTime($date);
+	return $date->format('Y-m-d');
+}
+
 
 function base_url(){
   return sprintf(
@@ -16,13 +21,13 @@ function base_url(){
 }
 
 function auth($db){
-	$query = $db->query("SELECT * FROM 	USER where User_Name = 'tuti' AND User_Password = 'tuti' ");
+	$query = $db->query("SELECT * FROM 	USER where User_Name = '".$_POST['username']."' AND User_Password = '".$_POST['password']."' ");
 
 	if($query == 1){
 		$_SESSION['CVPENUHBERKAH'] = $query->fetch_assoc();
-		return 'true';
+		return 1;
 	}else{
-		return 'false';
+		return 0;
 	}	
 }
 
@@ -105,5 +110,68 @@ function delete_supplier($db){
 	}
 	
 } // end function tambah barang
+
+
+function tambah_pembelian($db){
+
+	$query = $db->query("INSERT INTO `pembelian` (`No_Beli`,`Tanggal_Beli`,`Kode_Supplier`,`Tanggal_Input`,`User_Input`)
+		VALUES('".$_POST['no_pembelian']."','".format_date($_POST['tanggal'])."','".$_POST['supplier']."','".date('Y-m-d H:m:s')."','PB_002')
+		");
+
+	if($query === 1){
+		$params = $_POST['params'];
+		$queryDetail = '';
+
+		for ($i=0; $i < count($params); $i++) { 
+			if($params[$i]){
+			$queryDetail = $db->query("INSERT INTO `detail_pembelian` (`Kode_Barang`,`No_Beli`,`Harga`,`QTY`,`Satuan`,`Tanggal_Input`,`User_Input) 
+				VALUES 
+				('".$params[$i]['kode_barang']."','".$_POST['no_pembelian']."','".$params[$i]['harga']."','".$params[$i]['qty']."','".$params[$i]['satuan']."','".date('Y-m-d H:m:s')."','PB_002') ");
+			}
+		}
+
+		if($queryDetail === 1){
+			return 1;
+		}else{
+			return 0;
+		}
+	}else{
+		return 0;
+	}
+
+	
+
+} // end function pembelian
+
+function tambah_penjualan($db){
+
+	$query = $db->query("INSERT INTO `pembelian` (`No_Beli`,`Tanggal_Beli`,`Kode_Supplier`,`Tanggal_Input`,`User_Input`)
+		VALUES('".$_POST['no_pembelian']."','".format_date($_POST['tanggal'])."','".$_POST['supplier']."','".date('Y-m-d H:m:s')."','PB_002')
+		");
+
+	if($query === 1){
+		$params = $_POST['params'];
+		$queryDetail = '';
+
+		for ($i=0; $i < count($params); $i++) { 
+			if($params[$i]){
+				$queryDetail = $db->query("INSERT INTO `detail_pembelian` (`Kode_Barang`,`No_Beli`,`Harga`,`QTY`,`Satuan`,`Tanggal_Input`,`User_Input) 
+				VALUES 
+				('".$params[$i]['kode_barang']."','".$_POST['no_pembelian']."','".$params[$i]['harga']."','".$params[$i]['qty']."','".$params[$i]['satuan']."','".date('Y-m-d H:m:s')."','PB_002') ");
+			}		
+		}
+
+		if($queryDetail === 1){
+			return 1;
+		}else{
+			return 0;
+		}
+	}else{
+		return 0;
+	}
+
+	
+
+} // end function pembelian
 ?>
 

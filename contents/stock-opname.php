@@ -4,7 +4,7 @@
     $query = $conn->query("SELECT * FROM barang");
   ?>
           <p class="mg-b-20 mg-sm-b-30">
-              <a href="javascript:void(0)" class="menu-link btn btn-success" data-link="produksi-tambah">TAMBAH PRODUKSI</a>
+              <a href="javascript:void(0)" class="menu-link btn btn-success" data-link="stock-opname-tambah">TAMBAH STOCK OPNAME</a>
           </p>
 
           <div class="table-wrapper">

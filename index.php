@@ -51,7 +51,7 @@ include('connection.php');
     <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-	<link href="lib/highlightjs/github.css" rel="stylesheet">
+	  <link href="lib/highlightjs/github.css" rel="stylesheet">
     <link href="lib/datatables/jquery.dataTables.css" rel="stylesheet">
     <link href="lib/select2/css/select2.min.css" rel="stylesheet">
 
@@ -173,7 +173,7 @@ include('connection.php');
       </div>
 
       <div class="kt-pagebody">
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success" id="notification" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -192,6 +192,7 @@ include('connection.php');
 
     <script src="lib/jquery/jquery.js"></script>
     <script src="lib/popper.js/popper.js"></script>
+    <script src="lib/jquery-ui/jquery-ui.js"></script>
     <script src="lib/bootstrap/bootstrap.js"></script>
     <script src="lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="lib/moment/moment.js"></script>
@@ -212,6 +213,7 @@ include('connection.php');
 	})
 
   $(function(){
+      $('#notification').hide();
     // Initialize tooltip
         $('[data-toggle="tooltip"]').tooltip();
   })
