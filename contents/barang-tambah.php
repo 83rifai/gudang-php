@@ -45,7 +45,7 @@
   $(document).ready(function(){
     $('#button-save').click(function(){
       $.post('system/function.php?f=tambah_barang',$('#form-input').serialize(),function(response){
-        if(response === 'true'){
+        if(response === 1){
            $('#main-content').load('contents/barang.php');
         }
        

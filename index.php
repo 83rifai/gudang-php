@@ -2,7 +2,6 @@
 
 <?php 
 
-
 session_start();
 
 if(!isset($_SESSION['CVPENUHBERKAH'])){
@@ -208,7 +207,7 @@ include('connection.php');
 		$('.menu-link').click(function(){
 			var content = this.dataset.link;
 			$('#main-content').load('contents/' + content + '.php');
-			$('#page-title').text(content);
+			$('#page-title').text(content.replace('-',' '));
 		})
 	})
 
@@ -216,7 +215,9 @@ include('connection.php');
       $('#notification').hide();
     // Initialize tooltip
         $('[data-toggle="tooltip"]').tooltip();
-  })
+  
+      $('#page-title').text().replace('-', ' ');
+  });
 	</script>
 	
   </body>

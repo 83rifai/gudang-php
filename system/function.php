@@ -3,6 +3,8 @@ session_start();
 include "../connection.php";
 error_reporting(0);
 
+$auth = $_SESSION['CVPENUHBERKAH'];
+
 echo $_GET['f']($conn);
 
 function format_date($date){
@@ -22,7 +24,6 @@ function base_url(){
 
 function auth($db){
 	$query = $db->query("SELECT * FROM 	USER where User_Name = '".$_POST['username']."' AND User_Password = '".$_POST['password']."' ");
-
 	if($query == 1){
 		$_SESSION['CVPENUHBERKAH'] = $query->fetch_assoc();
 		return 1;
@@ -38,13 +39,13 @@ function tambah_barang($db){
 		'".$_POST['nama_barang']."',
 		'".$_POST['jenis_barang']."',
 		'".$_POST['satuan']."',
-		'PB_002',
+		'".$auth['User_Id']."',
 		'".date('Y-m-d H:m:s')."') ");
 	
 	if($query == 1){
-		return "true";
+		return 1;
 	}else{
-		return "false";
+		return 0;
 	}
 	
 } // end function tambah barang
@@ -56,7 +57,7 @@ function edit_barang($db){
 		Nama_Barang = '".$_POST['nama_barang']."',
 		Jenis_Barang = '".$_POST['jenis_barang']."',
 		Satuan = '".$_POST['satuan']."',
-		User_Ubah = 'PB_002',
+		User_Ubah = '".$auth['User_Id']."',
 		Tanggal_Ubah = '".date('Y-m-d H:m:s')."'
 		WHERE
 		Kode_Barang= '".$_POST['kode_barang']."' ");
@@ -87,7 +88,7 @@ function tambah_supplier($db){
 		'".$_POST['Nama_Supplier']."', 
 		'".$_POST['Contact_Person']."', 
 		'".$_POST['Alamat']."', 
-		'PB_002'
+		'".$auth['User_Id']."'
 		'".date('Y-m-d H:m:s')."') ");
 	
 	if($query == 1){
@@ -104,9 +105,9 @@ function delete_supplier($db){
 	$query = $db->query("DELETE FROM supplier WHERE Kode_Supplier = '".$_POST['kode_supplier']."' ");
 	
 	if($query == 1){
-		return "true";
+		return 1;
 	}else{
-		return "false";
+		return 0;
 	}
 	
 } // end function tambah barang
@@ -126,7 +127,7 @@ function tambah_pembelian($db){
 			if($params[$i]){
 			$queryDetail = $db->query("INSERT INTO `detail_pembelian` (`Kode_Barang`,`No_Beli`,`Harga`,`QTY`,`Satuan`,`Tanggal_Input`,`User_Input) 
 				VALUES 
-				('".$params[$i]['kode_barang']."','".$_POST['no_pembelian']."','".$params[$i]['harga']."','".$params[$i]['qty']."','".$params[$i]['satuan']."','".date('Y-m-d H:m:s')."','PB_002') ");
+				('".$params[$i]['kode_barang']."','".$_POST['no_pembelian']."','".$params[$i]['harga']."','".$params[$i]['qty']."','".$params[$i]['satuan']."','".date('Y-m-d H:m:s')."','".$auth['User_Id']."') ");
 			}
 		}
 
@@ -146,7 +147,7 @@ function tambah_pembelian($db){
 function tambah_penjualan($db){
 
 	$query = $db->query("INSERT INTO `pembelian` (`No_Beli`,`Tanggal_Beli`,`Kode_Supplier`,`Tanggal_Input`,`User_Input`)
-		VALUES('".$_POST['no_pembelian']."','".format_date($_POST['tanggal'])."','".$_POST['supplier']."','".date('Y-m-d H:m:s')."','PB_002')
+		VALUES('".$_POST['no_pembelian']."','".format_date($_POST['tanggal'])."','".$_POST['supplier']."','".date('Y-m-d H:m:s')."','".$auth['User_Id']."')
 		");
 
 	if($query === 1){

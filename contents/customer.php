@@ -1,22 +1,20 @@
 <?php include '../connection.php'; ?>
 <div class="card pd-20 pd-sm-40">
   <?php
-    $query = $conn->query("SELECT * FROM barang");
+    $query = $conn->query("SELECT * FROM customer");
   ?>
           <p class="mg-b-20 mg-sm-b-30">
-              <a href="javascript:void(0)" class="menu-link btn btn-success" data-link="barang-tambah">TAMBAH BARANG</a>
+              <a href="javascript:void(0)" class="menu-link btn btn-success" data-link="customer-tambah">TAMBAH CUSTOMER</a>
           </p>
 
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
               <thead>
                 <tr>
-                  <th class="wd-15p">Kode Barang</th>
-                  <th class="wd-15p">Nama Barang</th>
-                  <th class="wd-20p">Jenis Barang</th>
-                  <th class="wd-15p">QTY Stok Awal</th>
-                  <th class="wd-10p">Nilai Satuan</th>
-                  <th class="wd-15p">Satuan</th>
+                  <th class="wd-15p">ID Customer</th>
+                  <th class="wd-15p">Nama Customer</th>
+                  <th class="wd-20p">Alamat</th>
+                  <th class="wd-15p">Contact Person</th>
                   <th class="wd-10p"></th>
                 </tr>
               </thead>
@@ -25,15 +23,13 @@
                   while ($result = $query->fetch_assoc()) {
                     ?>
                     <tr>
-                      <td><?php echo $result['Kode_Barang']; ?></td>
-                      <td><?php echo $result['Nama_Barang'];?></td>
-                      <td><?php echo $result['Jenis_Barang'];?></td>
-                      <td><?php echo $result['Qty_Stok_Awal'];?></td>
-                      <td><?php echo $result['Nilai_Satuan'];?></td>
-                      <td><?php echo $result['Satuan'];?></td>
+                      <td><?php echo $result['id_customer']; ?></td>
+                      <td><?php echo $result['Nama_Customer'];?></td>
+                      <td><?php echo $result['Alamat'];?></td>
+                      <td><?php echo $result['Contact_person'];?></td>
                       <td align="center">
-                        <a href="javascript:void(0)" data-link="barang-edit" data-id="<?php echo $result['Kode_Barang'];?>" title="Edit" class="btn btn-primary btn-sm edit-link"><i class="fa fa-pencil"></i></a>
-                        <a href="javascript:void(0)" title="Delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                        <a href="javascript:void(0)" data-link="customer-edit" data-id="<?php echo $result['id_customer'];?>" title="Edit" class="btn btn-primary btn-sm edit-link"><i class="fa fa-pencil"></i></a>
+                        <a href="javascript:void(0)" title="Delete" data-link="customer-delete" data-id="<?php echo $result['id_customer'];?>" class="btn btn-danger btn-sm delete-link"><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>
                     <?php
@@ -53,7 +49,7 @@
       $('.menu-link').click(function(){
         var content = this.dataset.link;
         $('#main-content').load('contents/' + content + '.php');
-        $('#page-title').text(content);
+        $('#page-title').text(content.replace('-', ' '));
       }); // end
 
       $('.edit-link').click(function(){
@@ -61,7 +57,7 @@
         var Id = this.dataset.id;
         console.log(this)
         $('#main-content').load('contents/' + content + '.php?i=' + Id);
-        $('#page-title').text(content);
+        $('#page-title').text(content.replace('-', ' '));
       }); // end
     })
 
