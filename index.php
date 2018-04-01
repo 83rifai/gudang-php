@@ -143,7 +143,7 @@ include('connection.php');
         <div class="dropdown dropdown-profile">
           <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
             <img src="img/img3.jpg" class="wd-32 rounded-circle" alt="">
-            <span class="logged-name"><span class="hidden-xs-down"><?php echo strtoupper($auth['User_Name']); ?></span> <i class="fa fa-angle-down mg-l-3"></i></span>
+            <span class="logged-name"><span class="hidden-xs-down"><?php echo strtoupper($auth['user_name']); ?></span> <i class="fa fa-angle-down mg-l-3"></i></span>
           </a>
           <div class="dropdown-menu wd-200">
             <ul class="list-unstyled user-profile-nav">

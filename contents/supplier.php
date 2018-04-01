@@ -23,14 +23,14 @@
                   while ($result = $query->fetch_assoc()) {
                     ?>
                     <tr>
-                      <td><?php echo $result['Kode_Supplier']; ?></td>
-                      <td><?php echo $result['Nama_Supplier'];?></td>
-                      <td><?php echo $result['Contact_Person'];?></td>
-                      <td><?php echo $result['Alamat'];?></td>
+                      <td><?php echo $result['kode_supplier']; ?></td>
+                      <td><?php echo $result['nama_supplier'];?></td>
+                      <td><?php echo $result['contact_person'];?></td>
+                      <td><?php echo $result['alamat'];?></td>
                       
                       <td align="center">
-                        <a href="javascript:void(0)" data-link="supplier-edit" data-id="<?php echo $result['Kode_Supplier'];?>" title="Edit" class="btn btn-primary btn-sm edit-link"><i class="fa fa-pencil"></i></a>
-                        <a href="javascript:void(0)" title="Delete" data-link="supplier-delete" data-id="<?php echo $result['Kode_Supplier'];?>" class="btn btn-danger btn-sm delete-link"><i class="fa fa-trash"></i></a>
+                        <a href="javascript:void(0)" data-link="supplier-edit" data-id="<?php echo $result['kode_supplier'];?>" title="Edit" class="btn btn-primary btn-sm edit-link"><i class="fa fa-pencil"></i></a>
+                        <a href="javascript:void(0)" title="Delete" data-link="supplier-delete" data-id="<?php echo $result['kode_supplier'];?>" class="btn btn-danger btn-sm delete-link"><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>
                     <?php

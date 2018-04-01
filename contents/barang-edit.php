@@ -1,7 +1,7 @@
  <?php
  include("../connection.php");
 
- $query = $conn->query("SELECT * FROM barang WHERE Kode_Barang = '" . $_GET['i'] . "' LIMIT 1 ");
+ $query = $conn->query("SELECT * FROM barang WHERE kode_barang = '" . $_GET['i'] . "' LIMIT 1 ");
  $result = $query->fetch_assoc();
 
  ?>
@@ -14,26 +14,26 @@
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Kode Barang: </label>
-                  <input class="form-control" type="text" readonly="true" name="kode_barang" placeholder="Kode Barang" value="<?php echo $result['Kode_Barang']; ?>">
+                  <input class="form-control" type="text" readonly="true" name="kode_barang" placeholder="Kode Barang" value="<?php echo $result['kode_barang']; ?>">
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Nama Barang: </label>
-                  <input class="form-control" type="text" name="nama_barang" placeholder="Nama Barang" value="<?php echo $result['Nama_Barang']; ?>" >
+                  <input class="form-control" type="text" name="nama_barang" placeholder="Nama Barang" value="<?php echo $result['nama_barang']; ?>" >
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Jenis Barang: </label>
-                  <input class="form-control" type="text" name="jenis_barang" placeholder="Jenis Barang" value="<?php echo $result['Jenis_Barang']; ?>">
+                  <input class="form-control" type="text" name="jenis_barang" placeholder="Jenis Barang" value="<?php echo $result['jenis_barang']; ?>">
                 </div>
               </div><!-- col-4 -->
 
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Satuan Barang:</label>
-                  <input class="form-control" type="text" name="satuan" placeholder="Satuan Barang" value="<?php echo $result['Satuan']; ?>">
+                  <input class="form-control" type="text" name="satuan" placeholder="Satuan Barang" value="<?php echo $result['satuan']; ?>">
                 </div>
               </div><!-- col-4 -->
             </div><!-- row -->

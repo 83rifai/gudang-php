@@ -23,7 +23,7 @@ function base_url(){
 }
 
 function auth($db){
-	$query = $db->query("SELECT * FROM 	USER where User_Name = '".$_POST['username']."' AND User_Password = '".$_POST['password']."' ");
+	$query = $db->query("SELECT * FROM 	user where user_name = '".$_POST['username']."' AND user_password = '".$_POST['password']."' ");
 	if($query == 1){
 		$_SESSION['CVPENUHBERKAH'] = $query->fetch_assoc();
 		return 1;
@@ -32,14 +32,15 @@ function auth($db){
 	}	
 }
 
+
 function tambah_barang($db){
 	
-	$query = $db->query("INSERT INTO barang (Kode_Barang,Nama_Barang,Jenis_Barang,Satuan,User_Input,Tanggal_Input) 
+	$query = $db->query("INSERT INTO barang (kode_barang,nama_barang,jenis_barang,satuan,user_input,tanggal_input) 
 		VALUES('".$_POST['kode_barang']."',
 		'".$_POST['nama_barang']."',
 		'".$_POST['jenis_barang']."',
 		'".$_POST['satuan']."',
-		'".$auth['User_Id']."',
+		'".$auth['user_id']."',
 		'".date('Y-m-d H:m:s')."') ");
 	
 	if($query == 1){
@@ -53,42 +54,90 @@ function tambah_barang($db){
 function edit_barang($db){
 	
 	$query = $db->query("UPDATE barang SET 
-		Kode_Barang = '".$_POST['kode_barang']."',
-		Nama_Barang = '".$_POST['nama_barang']."',
-		Jenis_Barang = '".$_POST['jenis_barang']."',
-		Satuan = '".$_POST['satuan']."',
-		User_Ubah = '".$auth['User_Id']."',
-		Tanggal_Ubah = '".date('Y-m-d H:m:s')."'
+		kode_barang = '".$_POST['kode_barang']."',
+		nama_barang = '".$_POST['nama_barang']."',
+		jenis_barang = '".$_POST['jenis_barang']."',
+		satuan = '".$_POST['satuan']."',
+		user_ubah = '".$auth['user_id']."',
+		tanggal_ubah = '".date('Y-m-d H:m:s')."'
 		WHERE
-		Kode_Barang= '".$_POST['kode_barang']."' ");
+		kode_barang = '".$_POST['kode_barang']."' ");
 	
 	if($query == 1){
-		return "true";
+		return 1;
 	}else{
-		return "false";
+		return 0;
 	}
 	
 } // end function tambah barang
 
 function delete_barang($db){
-	$query = $db->query("DELETE FROM `barang` WHERE (`Kode_Barang`='".$_POST['kode_barang']."') ");
+	$query = $db->query("DELETE FROM `barang` WHERE (`kode_barang`='".$_POST['kode_barang']."') ");
 	if($query == 1){
-		return "true";
+		return 1;
 	}else{
-		return "false";
+		return 0;
 	}
 } // end function delete barang
 
 
+function tambah_customer($db){
+	
+	$query = $db->query("INSERT INTO barang (kode_barang,nama_barang,jenis_barang,satuan,user_input,tanggal_input) 
+		VALUES('".$_POST['kode_barang']."',
+		'".$_POST['nama_barang']."',
+		'".$_POST['jenis_barang']."',
+		'".$_POST['satuan']."',
+		'".$auth['user_id']."',
+		'".date('Y-m-d H:m:s')."') ");
+	
+	if($query == 1){
+		return 1;
+	}else{
+		return 0;
+	}
+	
+} // end function tambah customer
+
+function edit_customer($db){
+	
+	$query = $db->query("UPDATE barang SET 
+		kode_barang = '".$_POST['kode_barang']."',
+		nama_barang = '".$_POST['nama_barang']."',
+		jenis_barang = '".$_POST['jenis_barang']."',
+		satuan = '".$_POST['satuan']."',
+		user_ubah = '".$auth['user_id']."',
+		tanggal_ubah = '".date('Y-m-d H:m:s')."'
+		WHERE
+		kode_barang = '".$_POST['kode_barang']."' ");
+	
+	if($query == 1){
+		return 1;
+	}else{
+		return 0;
+	}
+	
+} // end function tambah customer
+
+function delete_customer($db){
+	$query = $db->query("DELETE FROM `barang` WHERE (`kode_barang`='".$_POST['kode_barang']."') ");
+	if($query == 1){
+		return 1;
+	}else{
+		return 0;
+	}
+} // end function delete customer
+
+
 function tambah_supplier($db){
 	
-	$query = $db->query("INSERT INTO `supplier` (`Kode_Supplier`, `Nama_Supplier`, `Contact_Person`, `Alamat`, `User_Input`, `Tanggal_Input`) 
+	$query = $db->query("INSERT INTO `supplier` (`kode_supplier`, `nama_supplier`, `contact_person`, `alamat`, `user_input`, `tanggal_input`) 
 		VALUES (
 		'".$_POST['Kode_Supplier']."', 
 		'".$_POST['Nama_Supplier']."', 
 		'".$_POST['Contact_Person']."', 
 		'".$_POST['Alamat']."', 
-		'".$auth['User_Id']."'
+		'".$auth['user_id']."'
 		'".date('Y-m-d H:m:s')."') ");
 	
 	if($query == 1){
@@ -102,7 +151,7 @@ function tambah_supplier($db){
 
 function delete_supplier($db){
 	
-	$query = $db->query("DELETE FROM supplier WHERE Kode_Supplier = '".$_POST['kode_supplier']."' ");
+	$query = $db->query("DELETE FROM supplier WHERE kode_supplier = '".$_POST['kode_supplier']."' ");
 	
 	if($query == 1){
 		return 1;
@@ -115,8 +164,8 @@ function delete_supplier($db){
 
 function tambah_pembelian($db){
 
-	$query = $db->query("INSERT INTO `pembelian` (`No_Beli`,`Tanggal_Beli`,`Kode_Supplier`,`Tanggal_Input`,`User_Input`)
-		VALUES('".$_POST['no_pembelian']."','".format_date($_POST['tanggal'])."','".$_POST['supplier']."','".date('Y-m-d H:m:s')."','PB_002')
+	$query = $db->query("INSERT INTO `pembelian` (`no_beli`,`tanggal_beli`,`kode_supplier`,`tanggal_input`,`user_input`)
+		VALUES('".$_POST['no_pembelian']."','".format_date($_POST['tanggal'])."','".$_POST['supplier']."','".date('Y-m-d H:m:s')."','".$auth['user_id']."')
 		");
 
 	if($query === 1){
@@ -125,9 +174,9 @@ function tambah_pembelian($db){
 
 		for ($i=0; $i < count($params); $i++) { 
 			if($params[$i]){
-			$queryDetail = $db->query("INSERT INTO `detail_pembelian` (`Kode_Barang`,`No_Beli`,`Harga`,`QTY`,`Satuan`,`Tanggal_Input`,`User_Input) 
+			$queryDetail = $db->query("INSERT INTO `detail_pembelian` (`kode_barang`,`no_beli`,`harga`,`qty`,`satuan`,`tanggal_input`,`user_input`) 
 				VALUES 
-				('".$params[$i]['kode_barang']."','".$_POST['no_pembelian']."','".$params[$i]['harga']."','".$params[$i]['qty']."','".$params[$i]['satuan']."','".date('Y-m-d H:m:s')."','".$auth['User_Id']."') ");
+				('".$params[$i]['kode_barang']."','".$_POST['no_pembelian']."','".$params[$i]['harga']."','".$params[$i]['qty']."','".$params[$i]['satuan']."','".date('Y-m-d H:m:s')."','".$auth['user_id']."') ");
 			}
 		}
 
@@ -174,5 +223,15 @@ function tambah_penjualan($db){
 	
 
 } // end function pembelian
+
+function get_detail_penjualan($db){
+
+	$query = $db->query("SELECT * FROM detail_jual ");
+
+	$result = $query->fetch_array();
+
+	echo json_encode($result);
+}
+
 ?>
 

@@ -1,7 +1,7 @@
  <?php
  include("../connection.php");
 
- $query = $conn->query("SELECT * FROM barang WHERE Kode_Barang = '" . $_GET['i'] . "' LIMIT 1 ");
+ $query = $conn->query("SELECT * FROM supplier WHERE kode_supplier = '" . $_GET['i'] . "' LIMIT 1 ");
  $result = $query->fetch_assoc();
 
  ?>

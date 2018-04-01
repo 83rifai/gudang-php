@@ -24,9 +24,9 @@
                     ?>
                     <tr>
                       <td><?php echo $result['id_customer']; ?></td>
-                      <td><?php echo $result['Nama_Customer'];?></td>
-                      <td><?php echo $result['Alamat'];?></td>
-                      <td><?php echo $result['Contact_person'];?></td>
+                      <td><?php echo $result['nama_customer'];?></td>
+                      <td><?php echo $result['alamat'];?></td>
+                      <td><?php echo $result['contact_person'];?></td>
                       <td align="center">
                         <a href="javascript:void(0)" data-link="customer-edit" data-id="<?php echo $result['id_customer'];?>" title="Edit" class="btn btn-primary btn-sm edit-link"><i class="fa fa-pencil"></i></a>
                         <a href="javascript:void(0)" title="Delete" data-link="customer-delete" data-id="<?php echo $result['id_customer'];?>" class="btn btn-danger btn-sm delete-link"><i class="fa fa-trash"></i></a>

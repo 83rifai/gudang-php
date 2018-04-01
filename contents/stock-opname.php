@@ -25,15 +25,15 @@
                   while ($result = $query->fetch_assoc()) {
                     ?>
                     <tr>
-                      <td><?php echo $result['Kode_Barang']; ?></td>
-                      <td><?php echo $result['Nama_Barang'];?></td>
-                      <td><?php echo $result['Jenis_Barang'];?></td>
-                      <td><?php echo $result['Qty_Stok_Awal'];?></td>
-                      <td><?php echo $result['Nilai_Satuan'];?></td>
-                      <td><?php echo $result['Satuan'];?></td>
+                      <td><?php echo $result['kode_barang']; ?></td>
+                      <td><?php echo $result['nama_barang'];?></td>
+                      <td><?php echo $result['jenis_barang'];?></td>
+                      <td><?php echo $result['qty_stok_awal'];?></td>
+                      <td><?php echo $result['nilai_satuan'];?></td>
+                      <td><?php echo $result['satuan'];?></td>
                       <td align="center">
-                        <a href="javascript:void(0)" data-link="barang-edit" data-id="<?php echo $result['Kode_Barang'];?>" title="Edit" class="btn btn-primary btn-sm edit-link"><i class="fa fa-pencil"></i></a>
-                        <a href="javascript:void(0)" title="Delete" data-link="barang-delete" data-id="<?php echo $result['Kode_Barang'];?>" class="btn btn-danger btn-sm delete-link"><i class="fa fa-trash"></i></a>
+                        <a href="javascript:void(0)" data-link="barang-edit" data-id="<?php echo $result['kode_barang'];?>" title="Edit" class="btn btn-primary btn-sm edit-link"><i class="fa fa-pencil"></i></a>
+                        <a href="javascript:void(0)" title="Delete" data-link="barang-delete" data-id="<?php echo $result['kode_barang'];?>" class="btn btn-danger btn-sm delete-link"><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>
                     <?php

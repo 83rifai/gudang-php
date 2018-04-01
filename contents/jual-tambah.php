@@ -1,109 +1,114 @@
- <form method="post" id="form-input">
+ <?php
+ include('../connection.php');
+  $query = $conn->query("SELECT no_jual FROM jual WHERE no_jual LIKE '1".date ('y')."%'");
+  $count = $query->num_rows;
+
+
+  $tahunbulan = "1".date ("ymd")."001";
+  $nobeli = (int)$tahunbulan+(int)$count;
+
+  $dataBarang = $conn->query("SELECT * FROM barang");
+  $dataCustomer = $conn->query("SELECT * FROM customer");
+  
+ ?>
+          
+ <form method="post" id="form-input" action="#">
 
         <div class="row row-sm mg-t-20">
           <div class="col-xl-6">
             <div class="card pd-20 pd-sm-40 form-layout form-layout-4">
               <div class="row">
-                <label class="col-sm-4 form-control-label">No Jual:</label>
+                <label class="col-sm-4 form-control-label">No Penjualan:</label>
                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                  <input type="text" class="form-control" placeholder="Nomor Jual">
+                  <input type="text" class="form-control" name="no_pembelian" placeholder="Nomor Jual" value="<?php echo $nobeli; ?>" readonly="true" >
                 </div>
               </div><!-- row -->
                <div class="row mg-t-20">
-                <label class="col-sm-4 form-control-label">Tanggal Jual:</label>
+                <label class="col-sm-4 form-control-label">Tanggal:</label>
                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                  <input type="text" class="form-control" placeholder="Tanggal Jual">
+                  <input type="text" class="form-control datepicker" name="tanggal" placeholder="MM/DD/YYYY">
                 </div>
               </div>
-              <div class="row mg-t-20">
+            </div><!-- card -->
+          </div><!-- col-6 -->
+
+          <div class="col-xl-6">
+            <div class="card pd-20 pd-sm-40 form-layout form-layout-4">
+              <div class="row">
                 <label class="col-sm-4 form-control-label">Nama Customer:</label>
                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                  <input type="text" class="form-control" placeholder="Nama Customer">
-                </div>
-              </div>
-              <div class="row mg-t-20">
-                <label class="col-sm-4 form-control-label">Kode Barang:</label>
-                <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                  <input type="text" class="form-control" placeholder="Kode Barang">
-                </div>
-              </div>
-            </div><!-- card -->
-          </div><!-- col-6 -->
+                  <select class="form-control select2-show-search" name="customre" data-placeholder="Choose one">
 
-          <div class="col-xl-6 mg-t-25 mg-xl-t-0">
-            <div class="card pd-20 pd-sm-40 form-layout form-layout-4">
-              <div class="row row-xs">
-                <label class="col-sm-4 form-control-label">No PO:</label>
-                <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                  <input type="text" class="form-control" placeholder="Enter firstname">
-                </div>
-              </div><!-- row -->
-              <div class="row row-xs mg-t-20">
-                <label class="col-sm-4 form-control-label">Tanggal PO:</label>
-                <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                  <input type="text" class="form-control" placeholder="Enter lastname">
+                    <option label="Choose one"></option>
+                     <?php
+                    
+                    while ($returnCustomer = $dataCustomer->fetch_assoc()) {
+                      echo '<option value="'.$returnCustomer['id_customer'].'">'.$returnCustomer['nama_customer'].'</option>';
+                    }
+                      
+                   
+                    ?>
+                  </select>
                 </div>
               </div>
-
-            </div><!-- card -->
-          </div><!-- col-6 -->
+              
+            </div>
+          </div>
 
         </div><!-- row -->
 
 
         <div class="card pd-20 pd-sm-40 mg-t-20">
-          <h6 class="card-body-title">Top Label Layout</h6>
-          <p class="mg-b-20 mg-sm-b-30">A form with a label on top of each form control.</p>
+          <div class="table-responsive">
+            <table class="table mg-b-0">
+              <thead>
+                <tr>
+                  <th>Nama Barang</th>
+                  <th width="100px">QTY</th>
+                  <th>Harga</th>
+                  <th>Satuan</th>
+                  <th>Action</th>
+                </tr>
+                <tr>
+                  <td>
+                   
+                    <select class="form-control select2-show-search" name="barang" data-placeholder="Choose one">
 
-          <div class="form-layout">
-            <div class="row mg-b-25">
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Firstname: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="firstname" value="John Paul" placeholder="Enter firstname">
-                </div>
-              </div><!-- col-4 -->
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Lastname: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="lastname" value="McDoe" placeholder="Enter lastname">
-                </div>
-              </div><!-- col-4 -->
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Email address: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="email" value="johnpaul@yourdomain.com" placeholder="Enter email address">
-                </div>
-              </div><!-- col-4 -->
-              <div class="col-lg-8">
-                <div class="form-group mg-b-10-force">
-                  <label class="form-control-label">Mail Address: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="address" value="Market St. San Francisco" placeholder="Enter address">
-                </div>
-              </div><!-- col-8 -->
-              <div class="col-lg-4">
-                <div class="form-group mg-b-10-force">
-                  <label class="form-control-label">Country: <span class="tx-danger">*</span></label>
-                  <select class="form-control select2" data-placeholder="Choose country">
-                    <option label="Choose country"></option>
-                    <option value="USA">United States of America</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="China">China</option>
-                    <option value="Japan">Japan</option>
+                    <option label="Choose one"></option>
+                     <?php
+                    
+                    while ($returnBarang = $dataBarang->fetch_assoc()) {
+                      echo '<option value="'.$returnBarang['kode_barang'].'">'.$returnBarang['nama_barang'].'</option>';
+                    }
+                      
+                   
+                    ?>
                   </select>
-                </div>
-              </div><!-- col-4 -->
-            </div><!-- row -->
+                </td>
+                  <td><input type="text" name="jumlah" class="form-control" placeholder="QTY"></td>
+                  <td><input type="text" name="price" class="form-control" placeholder="Harga"></td>
+                  <td><input type="text" name="unit" class="form-control" placeholder="Satuan"></td>
+                  <td>
+                    <button type="button" class="btn btn-success btn-md" id="btn-tambah">TAMBAH</button>
+                  </td>
+                </tr>
+                
+              </thead>
+              <tbody class="result-row">
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-            <div class="form-layout-footer pull-right">
-              <button class="btn btn-secondary">Cancel</button>
-              <button class="btn btn-default mg-r-5">Submit Form</button>
-            </div><!-- form-layout-footer -->
-          </div><!-- form-layout -->
-        </div><!-- card -->
+        <div class="card pd-20 pd-sm-40 mg-t-20">
+          <button type="button" id="button-save-pembelian" class="btn btn-success btn-md"><i class="fa fa-save"></i>&nbsp;SIMPAN</button>
+        </div>
+
+
 
 </form>
 
+    
 
 <script type="text/javascript">
   
@@ -113,7 +118,62 @@
         console.log(response)
         return false;
       })
-    })
+    }); // end
+
+    $('#btn-tambah').click(function(){
+
+      let long = $('.result-row').find('tr').length;
+      let prodCode = '';
+      let prodName = '';
+
+      let row = "";
+
+      prodCode = $('[name=barang] :selected').val();
+      prodName = $('[name=barang] :selected').text();
+      row += "<tr class='row-count count-"+long+"'>";
+        row += "<td>" + prodName +  "</td>";
+          row += "<input type='hidden' name='params["+long+"][kode_barang]' value='"+prodCode+"'>";
+        row += "<td>" + $('[name=jumlah]').val() + "</td>";
+          row += "<input type='hidden' name='params["+long+"][qty]' value='"+ $('[name=jumlah]').val() +"'>";
+        row += "<td>" + $('[name=price]').val() + "</td>";
+          row += "<input type='hidden' name='params["+long+"][harga]' value='"+ $('[name=price]').val() +"'>";
+        row += "<td>" + $('[name=unit]').val() + "</td>";
+          row += "<input type='hidden' name='params["+long+"][satuan]' value='"+ $('[name=unit]').val() +"'>";
+        row += "<td align='center'><button type='button' class='btn btn-sm btn-danger'><i class='fa fa-trash'></i></td>";
+      row += "</tr>";
+
+
+      $('.result-row').append(row);
+
+    });
+
+    $('#button-save-pembelian').click(function(){
+      $.post('system/function.php?f=tambah_pembelian',$('#form-input').serialize(),function(response){
+        console.log(response)
+      })
+    });
+
   })
 
-</script>
+
+      $(function(){
+
+        'use strict';
+
+        $('.select2').select2({
+          minimumResultsForSearch: Infinity
+        });
+
+        // Select2 by showing the search
+        $('.select2-show-search').select2({
+          minimumResultsForSearch: ''
+        });
+
+         $('.datepicker').datepicker({
+          showOtherMonths: true,
+          selectOtherMonths: true
+        });
+       
+      
+      });
+    </script>

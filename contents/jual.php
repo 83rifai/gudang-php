@@ -1,22 +1,19 @@
 <?php include '../connection.php'; ?>
 <div class="card pd-20 pd-sm-40">
   <?php
-    $query = $conn->query("SELECT * FROM barang");
+    $query = $conn->query("SELECT * FROM jual");
   ?>
           <p class="mg-b-20 mg-sm-b-30">
-              <a href="javascript:void(0)" class="menu-link btn btn-success" data-link="jual-tambah">TAMBAH BARANG</a>
+              <a href="javascript:void(0)" class="menu-link btn btn-success" data-link="jual-tambah">TAMBAH PENJUALAN</a>
           </p>
 
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
               <thead>
                 <tr>
-                  <th class="wd-15p">Kode Barang</th>
-                  <th class="wd-15p">Nama Barang</th>
-                  <th class="wd-20p">Jenis Barang</th>
-                  <th class="wd-15p">QTY Stok Awal</th>
-                  <th class="wd-10p">Nilai Satuan</th>
-                  <th class="wd-15p">Satuan</th>
+                  <th class="wd-15p">No Jual</th>
+                  <th class="wd-15p">Tanggal</th>
+                  <th class="wd-20p">Customer</th>
                   <th class="wd-10p"></th>
                 </tr>
               </thead>
@@ -25,14 +22,11 @@
                   while ($result = $query->fetch_assoc()) {
                     ?>
                     <tr>
-                      <td><?php echo $result['Kode_Barang']; ?></td>
-                      <td><?php echo $result['Nama_Barang'];?></td>
-                      <td><?php echo $result['Jenis_Barang'];?></td>
-                      <td><?php echo $result['Qty_Stok_Awal'];?></td>
-                      <td><?php echo $result['Nilai_Satuan'];?></td>
-                      <td><?php echo $result['Satuan'];?></td>
+                      <td><?php echo $result['no_jual']; ?></td>
+                      <td><?php echo $result['tanggal_jual'];?></td>
+                      <td><?php echo $result['id_customer'];?></td>
                       <td align="center">
-                        <a href="javascript:void(0)" data-link="barang-edit" data-id="<?php echo $result['Kode_Barang'];?>" title="Edit" class="btn btn-primary btn-sm edit-link"><i class="fa fa-pencil"></i></a>
+                        <a href="javascript:void(0)" data-link="barang-edit" data-id="<?php echo $result['no_jual'];?>" title="Edit" class="btn btn-primary btn-sm edit-link"><i class="fa fa-pencil"></i></a>
                         <a href="javascript:void(0)" title="Delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>

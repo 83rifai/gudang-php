@@ -1,6 +1,6 @@
  <?php
  include('../connection.php');
-  $query = $conn->query("SELECT No_Beli FROM pembelian WHERE No_Beli LIKE '1".date ('y')."%'");
+  $query = $conn->query("SELECT no_beli FROM pembelian WHERE No_Beli LIKE '1".date ('y')."%'");
   $count = $query->num_rows;
 
 
@@ -9,7 +9,8 @@
 
   $dataBarang = $conn->query("SELECT * FROM barang");
   $dataSupplier = $conn->query("SELECT * FROM supplier");
-  
+  $dataPenjualan = $conn->query("SELECT * FROM jual");
+
  ?>
           
  <form method="post" id="form-input" action="#">
@@ -18,7 +19,7 @@
           <div class="col-xl-6">
             <div class="card pd-20 pd-sm-40 form-layout form-layout-4">
               <div class="row">
-                <label class="col-sm-4 form-control-label">No Pembelian:</label>
+                <label class="col-sm-4 form-control-label">No Produksi:</label>
                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                   <input type="text" class="form-control" name="no_pembelian" placeholder="Nomor Jual" value="<?php echo $nobeli; ?>" readonly="true" >
                 </div>
@@ -35,15 +36,15 @@
           <div class="col-xl-6">
             <div class="card pd-20 pd-sm-40 form-layout form-layout-4">
               <div class="row">
-                <label class="col-sm-4 form-control-label">Nama Supplier:</label>
+                <label class="col-sm-4 form-control-label">No Penjualan:</label>
                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                  <select class="form-control select2-show-search" name="supplier" data-placeholder="Choose one">
+                  <select class="form-control select2-show-search" name="penjualan" data-placeholder="Choose one">
 
                     <option label="Choose one"></option>
                      <?php
                     
-                    while ($returnBarang = $dataSupplier->fetch_assoc()) {
-                      echo '<option value="'.$returnBarang['Kode_Supplier'].'">'.$returnBarang['Nama_Supplier'].'</option>';
+                    while ($returnPenjualan = $dataPenjualan->fetch_assoc()) {
+                      echo '<option value="'.$returnPenjualan['no_jual'].'">'.$returnPenjualan['no_jual'].'</option>';
                     }
                       
                    

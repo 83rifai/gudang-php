@@ -2,7 +2,7 @@
 
 require_once 'connect.php';
 
-	$q = mysql_query("SELECT Kode_Barang, Stok_Awal, Stok_Masuk, Stok_Keluar, Stok_PF, Stok_Penyesuaian, Stok_Akhir FROM stok");
+	$q = mysql_query("SELECT kode_barang, stok_awal, stok_masuk, stok_keluar, stok_pf, stok_penyesuaian, stok_akhir FROM stok");
 
 	$no = 1;
 	$body = '';
@@ -12,19 +12,16 @@ require_once 'connect.php';
 		
 		<tr>
 			<td>".$no."</td>
-			<td>".$dt['Kode_Barang']."</td>
-			<td>".$dt['Stok_Awal']."</td>
-			<td>".$dt['Stok_Masuk']."</td>
-			<td>".$dt['Stok_Keluar']."</td>
-			<td>".$dt['Stok_PF']."</td>
-			<td>".$dt['Stok_Penyesuaian']."</td>
-			<td>".$dt['Stok_Akhir']."</td>
+			<td>".$dt['kode_barang']."</td>
+			<td>".$dt['stok_awal']."</td>
+			<td>".$dt['stok_masuk']."</td>
+			<td>".$dt['stok_keluar']."</td>
+			<td>".$dt['stok_pf']."</td>
+			<td>".$dt['stok_penyesuain']."</td>
+			<td>".$dt['stok_akhir']."</td>
 			<td>
-				<a href='../stok/edit_stok.php?Kode_Barang=".$dt['Kode_Barang']."'>Edit</a>
-				<a href='../stok/hapus_stok.php?Kode_Barang=".$dt['Kode_Barang']."'>Hapus</a>
-			</td>
-		</tr>
-		";
+				<a href='../stok/edit_stok.php?Kode_Barang=".$dt['kode_barang']."'>Edit</a>
+				<a href='../stok/hapus_stok.php?Kode_Barang=".$dt['kode_barang']."'>Hapus</a></td></tr>";
 		
 		$no++;
 	};
